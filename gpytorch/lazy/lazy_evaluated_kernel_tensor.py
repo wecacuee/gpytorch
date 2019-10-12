@@ -184,8 +184,8 @@ class LazyEvaluatedKernelTensor(LazyTensor):
         x1 = self.x1
         x2 = self.x2
         num_outputs_per_input = self.kernel.num_outputs_per_input(x1, x2)
-        num_rows = x1.size(-2) * num_outputs_per_input
-        num_cols = x2.size(-2) * num_outputs_per_input
+        num_rows = int(x1.size(-2) * num_outputs_per_input)
+        num_cols = int(x2.size(-2) * num_outputs_per_input)
 
         # Default case - when we're not using broadcasting
         # We write this case special for efficiency
